@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamFlow - Task Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 TeamFlow</h1>
+            <p>Streamlined Task Management for Small Teams</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-section">
+            <div class="auth-forms">
+                <!-- Sign Up Form -->
+                <div class="form-group">
+                    <h3>🔐 Sign Up</h3>
+                    <form id="signupForm">
+                        <div class="input-group">
+                            <label for="signupName">Full Name</label>
+                            <input type="text" id="signupName" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signupEmail">Email</label>
+                            <input type="email" id="signupEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signupRole">Role</label>
+                            <select id="signupRole" required>
+                                <option value="">Select Role</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Developer">Developer</option>
+                                <option value="Designer">Designer</option>
+                                <option value="QA">QA Tester</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Create Account</button>
+                    </form>
+                </div>
+
+                <!-- Login Form -->
+                <div class="form-group">
+                    <h3>🔑 Login</h3>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn">Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Application -->
+        <div id="mainApp" class="main-app">
+            <!-- App Header -->
+            <div class="app-header">
+                <div class="user-info">
+                    <div id="userAvatar" class="avatar"></div>
+                    <div>
+                        <div id="userName" style="font-weight: 600;"></div>
+                        <div id="userRole" style="color: #666; font-size: 0.9rem;"></div>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div id="totalTasks" class="stat-number">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-card">
+                    <div id="pendingTasks" class="stat-number">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div id="inProgressTasks" class="stat-number">0</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+                <div class="stat-card">
+                    <div id="completedTasks" class="stat-number">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="task-section">
+                <h2 class="section-title">👥 Team Members</h2>
+                <div class="team-section">
+                    <div id="teamList" class="team-list"></div>
+                </div>
+            </div>
+
+            <!-- Task Creation Section -->
+            <div class="task-section">
+                <h2 class="section-title">➕ Create New Task</h2>
+                <div class="task-form">
+                    <form id="taskForm">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="taskTitle">Task Title</label>
+                                    <input type="text" id="taskTitle" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="taskAssignee">Assign To</label>
+                                    <select id="taskAssignee" required>
+                                        <option value="">Select Team Member</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="taskDeadline">Deadline</label>
+                                    <input type="date" id="taskDeadline" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="taskPriority">Priority</label>
+                                    <select id="taskPriority" required>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium" selected>Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="taskDescription">Description</label>
+                            <textarea id="taskDescription" rows="3" placeholder="Task details and requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Create Task</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tasks Display Section -->
+            <div class="task-section">
+                <h2 class="section-title">📋 Task Board</h2>
+                <div class="tasks-grid">
+                    <div class="task-column">
+                        <h4 class="pending-header">⏳ Pending</h4>
+                        <div id="pendingTasksList"></div>
+                    </div>
+                    <div class="task-column">
+                        <h4 class="progress-header">🔄 In Progress</h4>
+                        <div id="progressTasksList"></div>
+                    </div>
+                    <div class="task-column">
+                        <h4 class="completed-header">✅ Completed</h4>
+                        <div id="completedTasksList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Container -->
+    <div id="notifications" class="notifications"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
