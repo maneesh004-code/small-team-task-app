@@ -56,4 +56,4 @@ teamflow/
 
 🚀 Getting Started
 Clone this repository:
-git clone https://github.com/maneesh004-code/task-manager-app.git
+git clone https://github.com/maneesh004-code/small-team-task-app
